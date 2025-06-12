@@ -1,82 +1,188 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Saya</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Surprise</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #111;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .popup {
+      position: absolute;
+      background: white;
+      color: #333;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+      z-index: 10;
+      animation: fadeIn 1s ease;
+    }
+
+    .popup h2 {
+      margin-bottom: 20px;
+    }
+
+    .popup button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .popup button:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      background-color: #2196f3;
+      color: white;
+    }
+
+    #videoContainer, #finalMessage, #photoGallery, #triggerButton {
+      display: none;
+    }
+
+    #videoContainer iframe {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #finalMessage {
+      position: absolute;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #triggerButton {
+      position: absolute;
+      bottom: 40px;
+      background-color: #4caf50;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      animation: fadeIn 1s ease;
+    }
+
+    #photoGallery {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      scroll-snap-type: x mandatory;
+      padding: 20px;
+    }
+
+    .gallery-container img {
+      scroll-snap-align: center;
+      max-height: 80vh;
+      border-radius: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Nama Anda</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang Saya</a></li>
-                    <li><a href="#portfolio">Portofolio</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <h2>Selamat Datang di Portofolio Saya</h2>
-            <p>Desain kreatif dan solusi digital untuk kebutuhan Anda.</p>
-        </div>
-    </section>
+  <!-- POPUP PERTAMA -->
+  <div class="popup" id="popup">
+    <h2>Gimana hari ini sayang? 🥺</h2>
+    <button class="btn" onclick="playVideo()">A. Cukup melelahkan</button>
+    <button class="btn" onclick="playVideo()">B. Alhamdulillah semuanya berjalan dengan baik</button>
+    <button class="btn" onclick="playVideo()">C. Kesel buangetttt</button>
+  </div>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2>Tentang Saya</h2>
-            <p>Lulusan SMK Kusuma Bangsa jurusan Multimedia tahun 2020 - 2023. Menjadi siswa teraktivasi di SMK. Memiliki keahlian khusus dalam menjalankan software Microsoft (Excel, Word, Power Point, dll). Desain (Adobe Photoshop, Adobe Premire Pro, Canva, dan Figma). Disiplin, tanggung jawab, teliti, jujur, dan mudah beradaptasi dalam berbagai lingkungan.</p>
-        </div>
-    </section>
+  <!-- VIDEO -->
+  <div id="videoContainer">
+    <iframe id="videoFrame" src="https://drive.google.com/file/d/1mgnDF0sGODRQkAVVN8nYa5wU3P6zyD77/view?usp=sharing" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2>Portofolio</h2>
-            <div class="portfolio-items">
-                <!-- Ganti gambar dan deskripsi dengan proyek-proyek Anda -->
-                <div class="portfolio-item">
-                    <img src="image1.jpg" alt="Proyek 1">
-                    <h3>Proyek 1</h3>
-                    <p>Deskripsi singkat tentang proyek ini.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="image2.jpg" alt="Proyek 2">
-                    <h3>Proyek 2</h3>
-                    <p>Deskripsi singkat tentang proyek ini.</p>
-                </div>
-                <!-- Tambahkan lebih banyak item portofolio di sini -->
-            </div>
-        </div>
-    </section>
+  <!-- FINAL MESSAGE -->
+  <div id="finalMessage">
+    <h2>Semoga video yang aku buat ini bisa mengurangi rasa lelah kamu yah sayangg 🥹</h2>
+    <p>Aku bangga banget punya kamu! I love you sayangkuuu 🤍</p>
+  </div>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Kontak</h2>
-            <form>
-                <label for="name">Nama:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Pesan:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                
-                <button type="submit">Kirim Pesan</button>
-            </form>
-        </div>
-    </section>
+  <!-- BUTTON TO TRIGGER PHOTO GALLERY -->
+  <button id="triggerButton" onclick="showPhotos()">Pencet Aku 😚</button>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Faiizhsn. Semua hak cipta dilindungi.</p>
-        </div>
-    </footer>
+  <!-- PHOTO GALLERY -->
+  <div id="photoGallery">
+    <div class="gallery-container">
+      <img src="" alt="Lucu 1">
+      <img src="https://drive.google.com/file/d/1jPanVBl4pMCkmsZ8E8sTfcuNhYrEpAji/view?usp=sharing" alt="Lucu 2">
+      <img src="https://drive.google.com/file/d/1UuaPlD908XSlFu4Fm9JhQDs3RnhfMTe8/view?usp=sharing" alt="Lucu 3">
+      <img src="https://drive.google.com/file/d/1stGQYl6yqwSPMEiQi4odTqHlY-ZP_5VA/view?usp=sharing" alt="Lucu 4">
+      <img src="https://drive.google.com/file/d/1wyTM7OEL13accLrGw52srmKj4KEegdtG/view?usp=sharing" alt="Lucu 5">
+      <img src="https://drive.google.com/file/d/1yKVwg-qzkgfKpGk5IMgePLIB-mhpQrJw/view?usp=sharing" alt="Lucu 6">
+      <img src="https://drive.google.com/file/d/1veGf9IhyGqCiGSzdQjG2Hg6G_5k6Kb_0/view?usp=sharing" alt="Lucu 7">
+      <!-- Tambahkan lagi gambar sesukamu -->
+    </div>
+  </div>
+
+  <script>
+    function playVideo() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("videoContainer").style.display = "block";
+
+      // Periksa video selesai dalam 40 detik (ganti jika videonya lebih panjang)
+      setTimeout(() => {
+        document.getElementById("videoContainer").style.display = "none";
+        document.getElementById("finalMessage").style.display = "block";
+
+        setTimeout(() => {
+          document.getElementById("triggerButton").style.display = "block";
+        }, 5000);
+      }, 40000); // durasi video
+    }
+
+    function showPhotos() {
+      document.getElementById("finalMessage").style.display = "none";
+      document.getElementById("triggerButton").style.display = "none";
+      document.getElementById("photoGallery").style.display = "flex";
+    }
+  </script>
+
 </body>
 </html>
