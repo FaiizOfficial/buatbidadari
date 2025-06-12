@@ -62,19 +62,41 @@
       display: none;
     }
 
-    #videoContainer iframe {
-      width: 100vw;
-      height: 100vh;
+    #videoContainer {
+      background: pink;
+      padding: 30px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #videoContainer::before {
+      content: "💖";
+      font-size: 50px;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease infinite;
+    }
+
+    video {
+      width: 640px;
+      max-width: 90vw;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
     #finalMessage {
       position: absolute;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       color: white;
       padding: 30px;
       border-radius: 12px;
       text-align: center;
       animation: fadeIn 1s ease forwards;
+      z-index: 10;
     }
 
     #triggerButton {
@@ -133,9 +155,9 @@
     <button class="btn" onclick="playVideo()">C. Kesel buangetttt</button>
   </div>
 
-  <!-- VIDEO -->
+  <!-- VIDEO CONTAINER -->
   <div id="videoContainer">
-    <iframe id="videoFrame" src="11.mp4" frameborder="0" allowfullscreen></iframe>
+    <video id="loveVideo" src="11.mp4" controls></video>
   </div>
 
   <!-- FINAL MESSAGE -->
@@ -156,24 +178,26 @@
       <img src="3.JPG" alt="Lucu 4">
       <img src="4.JPG" alt="Lucu 5">
       <img src="5.jpg" alt="Lucu 6">
-      <!-- Tambahkan lagi gambar sesukamu -->
     </div>
   </div>
 
   <script>
     function playVideo() {
       document.getElementById("popup").style.display = "none";
-      document.getElementById("videoContainer").style.display = "block";
+      const videoContainer = document.getElementById("videoContainer");
+      const video = document.getElementById("loveVideo");
 
-      // Periksa video selesai dalam 40 detik (ganti jika videonya lebih panjang)
-      setTimeout(() => {
-        document.getElementById("videoContainer").style.display = "none";
+      videoContainer.style.display = "flex";
+      video.play();
+
+      video.onended = () => {
+        videoContainer.style.display = "none";
         document.getElementById("finalMessage").style.display = "block";
 
         setTimeout(() => {
           document.getElementById("triggerButton").style.display = "block";
-        }, 5000);
-      }, 40000); // durasi video
+        }, 3000); // delay tombol muncul
+      };
     }
 
     function showPhotos() {
