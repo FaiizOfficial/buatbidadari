@@ -101,6 +101,16 @@
       z-index: 30;
     }
 
+    #heartContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100; /* Pastikan tetap di atas gambar tapi di bawah konten penting */
+    }
+
     .gallery-container {
       display: flex;
       overflow-x: auto;
@@ -216,6 +226,9 @@
     Your browser does not support audio.
   </audio>
 
+  <!-- Heart Container dipindah ke sini -->
+  <div id="heartContainer"></div>
+
   <div class="gallery-container">
     <img src="0.jpg" alt="Lucu 1">
     <img src="1.JPG" alt="Lucu 2">
@@ -225,6 +238,7 @@
     <img src="5.jpg" alt="Lucu 6">
   </div>
 </div>
+
 
 <!-- Heart Effect -->
 <div id="heartContainer"></div>
