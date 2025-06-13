@@ -79,25 +79,18 @@
     }
 
     #finalLovePage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, #a8e6cf, #dcedc1); /* hijau pastel yang lucu */
-  color: #2e7d32; /* hijau lebih gelap untuk teks */
-  padding: 30px;
-  border-radius: 0; /* biar rata penuh, bisa dihilangkan kalau mau */
-  text-align: center;
-  animation: fadeIn 1s ease forwards;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
-}
-
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+      color: #2e7d32;
+      padding: 30px 20px 200px; /* padding bawah ditambah agar tombol jauh di bawah */
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     #photoGallery {
       position: fixed;
@@ -232,15 +225,15 @@
 
 
 
-    
+
   </p>
   
   <!-- Spacer biar harus scroll -->
   <div style="height: 150px;"></div>
 
-  <button onclick="showPhotos()" style="padding: 12px 24px; border: none; border-radius: 12px; font-size: 16px; background-color: #ff69b4; color: white;">
-    Klik Aku 😚
-  </button>
+  <button onclick="showPhotos()" style="margin-top: 200px; padding: 12px 24px; border: none; border-radius: 12px; font-size: 16px; background-color: #ff69b4; color: white;">
+  Klik Aku 😚
+</button>
 </div>
 
 <!-- PHOTO GALLERY -->
