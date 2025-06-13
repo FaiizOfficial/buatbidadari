@@ -11,16 +11,16 @@
       padding: 0;
     }
 
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
     body {
       background: linear-gradient(135deg, #ffdde1, #c7f0ff);
       color: white;
-      font-family: 'Segoe UI', sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      flex-direction: column;
     }
 
     .popup-overlay {
@@ -74,20 +74,15 @@
       transform: scale(1.05);
     }
 
-    #finalLovePage, #photoGallery {
-      display: none;
-    }
-
     #finalLovePage {
-      position: relative;
       min-height: 100vh;
       background: linear-gradient(135deg, #a8e6cf, #dcedc1);
       color: #2e7d32;
-      padding: 30px 20px 200px; /* padding bawah ditambah agar tombol jauh di bawah */
+      padding: 30px 20px 100px;
       text-align: center;
       animation: fadeIn 1s ease forwards;
       z-index: 1000;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
     }
@@ -99,7 +94,7 @@
       width: 100vw;
       height: 100vh;
       background: #000;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       overflow: hidden;
@@ -125,6 +120,14 @@
       to { opacity: 1; }
     }
 
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: pink;
+      animation: floatHearts 4s ease-in infinite;
+      z-index: 999;
+    }
+
     @keyframes floatHearts {
       0% {
         transform: translateY(0) scale(1);
@@ -134,14 +137,6 @@
         transform: translateY(-100vh) scale(0.5);
         opacity: 0;
       }
-    }
-
-    .heart {
-      position: absolute;
-      font-size: 24px;
-      color: pink;
-      animation: floatHearts 4s ease-in infinite;
-      z-index: 999;
     }
 
     @media (max-width: 600px) {
@@ -166,11 +161,12 @@
 <!-- POPUP 2 -->
 <div class="popup-overlay" id="popup2" style="display:none; background: #b3e5fc;">
   <div class="popup-card">
-      <h2>Akhhh sudah aku duga pasti jawaban kamu itu😁<br><br> Sekarang pilih salah satu yah, kamu lagi mau apa untuk mengurangi rasa capenya?</h2>
-      <button onclick="nextPopup()">A. Mau jajannn☕🍫🍣</button>
-      <button onclick="nextPopup()">B. Mau makan gacoan lagii🍜🍜</button>
-      <button onclick="nextPopup()">C. Mau nyeblakk bareng kamu🥗🥗</button>
-      <button onclick="nextPopup()">D. Mau pelukk🫂🫂</button>
+    <h2>Akhhh sudah aku duga pasti jawaban kamu itu😁<br><br>
+      Sekarang pilih salah satu yah, kamu lagi mau apa untuk mengurangi rasa capenya?</h2>
+    <button onclick="nextPopup()">A. Mau jajannn☕🍫🍣</button>
+    <button onclick="nextPopup()">B. Mau makan gacoan lagii🍜🍜</button>
+    <button onclick="nextPopup()">C. Mau nyeblakk bareng kamu🥗🥗</button>
+    <button onclick="nextPopup()">D. Mau pelukk🫂🫂</button>
   </div>
 </div>
 
@@ -191,49 +187,26 @@
   </p>
 
   <p style="margin-top: 20px; max-width: 500px;">
-    Semangat terus yah sayang, aku selalu ada buat kamuuu, terimakasih banyak banyak juga yahh udah selalu sabar dan perhatian sama aku. Kamu itu bukan cuma pasangan, tapi juga temen curhat, penyemangat, dan tempat ternyaman aku.
+    Semangat terus yah sayang, aku selalu ada buat kamuuu, terimakasih banyak banyak juga yahh
+    udah selalu sabar dan perhatian sama aku. Kamu itu bukan cuma pasangan, tapi juga temen
+    curhat, penyemangat, dan tempat ternyaman aku.
   </p>
 
   <p style="margin-top: 20px; max-width: 500px;">
-    Semoga hubungan kita selalu diberkahi, dilancarkan, dan bisa sama-sama sampai ke tujuan yang kita mau bareng-bareng aamiin😚
+    Semoga hubungan kita selalu diberkahi, dilancarkan, dan bisa sama-sama sampai ke tujuan
+    yang kita mau bareng-bareng aamiin😚
   </p>
 
   <p style="margin-top: 30px; color: rgb(49, 184, 238); font-weight: bold;">
     Scroll ke bawah dulu yaaa 👇
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </p>
-  
-  <!-- Spacer biar harus scroll -->
-  <div style="height: 150px;"></div>
 
-  <button onclick="showPhotos()" style="margin-top: 200px; padding: 12px 24px; border: none; border-radius: 12px; font-size: 16px; background-color: #ff69b4; color: white;">
-  Klik Aku 😚
-</button>
+  <!-- Spacer agar harus scroll -->
+  <div style="height: 200px;"></div>
+
+  <button onclick="showPhotos()" style="margin-top: 50px; padding: 12px 24px; border: none; border-radius: 12px; font-size: 16px; background-color: #ff69b4; color: white;">
+    Klik Aku 😚
+  </button>
 </div>
 
 <!-- PHOTO GALLERY -->
@@ -253,7 +226,7 @@
   </div>
 </div>
 
-<!-- HEART EFFECT CONTAINER -->
+<!-- Heart Effect -->
 <div id="heartContainer"></div>
 
 <script>
@@ -264,7 +237,6 @@
 
   function nextPopup() {
     document.getElementById("popup2").style.display = "none";
-    document.body.style.background = "linear-gradient(to right, #ffecd2, #fcb69f)";
     document.getElementById("finalLovePage").style.display = "flex";
   }
 
