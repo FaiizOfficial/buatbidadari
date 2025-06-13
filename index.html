@@ -79,16 +79,25 @@
     }
 
     #finalLovePage {
-      position: fixed;
-      background: rgba(0,0,0,0.85);
-      color: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      animation: fadeIn 1s ease forwards;
-      z-index: 10;
-      max-width: 90%;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1); /* hijau pastel yang lucu */
+  color: #2e7d32; /* hijau lebih gelap untuk teks */
+  padding: 30px;
+  border-radius: 0; /* biar rata penuh, bisa dihilangkan kalau mau */
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
 
     #photoGallery {
       position: fixed;
@@ -164,11 +173,11 @@
 <!-- POPUP 2 -->
 <div class="popup-overlay" id="popup2" style="display:none; background: #b3e5fc;">
   <div class="popup-card">
-    <h2>Akhhh sudah aku duga pasti jawaban kamu itu 😆<br><br> Sekarang pilih salah satu yah, lagi mau apa biar rasa capenya ilang?</h2>
-    <button onclick="nextPopup()">A. mau jajannn</button>
-    <button onclick="nextPopup()">B. mau makan gacoan lagii</button>
-    <button onclick="nextPopup()">C. mau nyeblakk bareng kamu</button>
-    <button onclick="nextPopup()">D. mau pelukk</button>
+      <h2>Akhhh sudah aku duga pasti jawaban kamu itu 😆<br><br> Sekarang pilih salah satu yah, lagi mau apa biar rasa capenya ilang?</h2>
+      <button onclick="nextPopup()">A. Mau jajannn</button>
+      <button onclick="nextPopup()">B. Mau makan gacoan lagii</button>
+      <button onclick="nextPopup()">C. Mau nyeblakk bareng kamu</button>
+      <button onclick="nextPopup()">D. Mau pelukk</button>
   </div>
 </div>
 
